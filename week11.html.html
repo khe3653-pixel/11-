@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물품 홍보 웹페이지</title>
+    <style>
+        /* 전체 페이지 디자인 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fcfbf9;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* 사진 배열 */
+        .jewelry-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        /* 개별 사진 디자인 */
+        .jewelry-card {
+            background-color: #fff;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
+            transition: box-shadow 0.3s ease;
+        }
+
+        .jewelry-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 이미지 이동 공간 */
+        .image-stage {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            margin-bottom: 15px;
+        }
+
+        /* 이미지 3장 기본 스타일 (처음엔 하나로 포개져 있음) */
+        .jewelry-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+            background-color: #eee;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* 클릭 가능하다는 표시 */
+            
+            /* 기준점 */
+            transform-origin: bottom center; 
+            /* 움직임 */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.1s; 
+        }
+        
+        /* 마우스 안 올렸을 때 하나로 보임 */
+        .img-main { z-index: 3; transform: translateX(0) rotate(0); }
+        .img-sub1 { z-index: 2; transform: translateX(0) rotate(0); }
+        .img-sub2 { z-index: 1; transform: translateX(0) rotate(0); }
+
+        /* 이미지에 마우스 올렸을 때 부채꼴로 펼침 */
+        .jewelry-card:hover .img-main {
+            transform: translateY(-10px);
+            z-index: 3;
+        }
+        .jewelry-card:hover .img-sub1 {
+            transform: translateX(-45px) rotate(-15deg);
+            z-index: 2;
+        }
+        .jewelry-card:hover .img-sub2 {
+            transform: translateX(45px) rotate(15deg);
+            z-index: 1;
+        }
+
+        /* 뒤에 있던 이미지에 마우스를 직접 올렸을 때 그림자로 강조 */
+        .jewelry-image:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        /* -------------------------------------- */
+
+        /* 각 악세사리 이름 */
+        .jewelry-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 15px 0 8px 0;
+            color: #222;
+        }
+
+        /* 설명 */
+        .jewelry-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+            word-break: keep-all;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JEWELRY</h1>
+
+    <div class="jewelry-container">
+
+        <!-- 반지 -->
+        <div class="jewelry-card">
+            <div class="image-stage">
+                <img src="https://i.namu.wiki/i/ipwo0CklBpHZNtqTeVHssodIle0Ox6ntPyef8jc879AL_haTZaDzUw-DoSVRkCW1-SiSkcVgUgFAmtxBxqH2-Q.webp" alt="반지 1" class="jewelry-image img-main">
+                <img src="https://cdn.pixabay.com/photo/2018/05/21/04/35/ring-3417372_640.png" alt="반지 2" class="jewelry-image img-sub1">
+                <img src="https://p.turbosquid.com/ts-thumb/Vq/PNURmf/ib/freesnakeringpreview/png/1733046810/300x300/sharp_fit_q85/98b6caa1a09c0142f48feb10d25321d4673a693b/freesnakeringpreview.jpg" alt="반지 3" class="jewelry-image img-sub2">
+            </div>
+            <h3 class="jewelry-title">반지</h3>
+            <p class="jewelry-desc">손가락에 끼우는 고리 형태의 장신구로, 손가락에 끼우는 위치 별로 의미가 다르다는 특징이 있습니다.</p>
+        </div>
+
+        <!-- 목걸이 -->
+        <div class="jewelry-card">
+            <div class="image-stage">
+                <img src="https://images.pexels.com/photos/6154083/pexels-photo-6154083.jpeg" alt="목걸이 1" class="jewelry-image img-main">
+                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338" alt="목걸이 2" class="jewelry-image img-sub1">
+                <img src="https://p.turbosquid.com/ts-thumb/ji/zrDlhI/Rj/ruby_necklace/png/1723479574/300x300/sharp_fit_q85/3a3efcd39968347b4099067dbb7258e6279b912a/ruby_necklace.jpg" alt="목걸이 3" class="jewelry-image img-sub2">
+            </div>
+            <h3 class="jewelry-title">목걸이</h3>
+            <p class="jewelry-desc">목에 거는 장신구로, 심플한 펜던트와 화려한 초커 스타일이 있습니다.</p>
+        </div>
+
+        <!-- 팔찌 -->
+        <div class="jewelry-card">
+            <div class="image-stage">
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a" alt="팔찌 1" class="jewelry-image img-main">
+                <img src="https://plus.unsplash.com/premium_photo-1681276168324-a6f1958aa191?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8JUVEJThDJTk0JUVDJUIwJThDfGVufDB8fDB8fHww" alt="팔찌 2" class="jewelry-image img-sub1">
+                <img src="https://images.unsplash.com/photo-1721206624492-3d05631471ea?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8JUVEJThDJTk0JUVDJUIwJThDfGVufDB8fDB8fHww" alt="팔찌 3" class="jewelry-image img-sub2">
+            </div>
+            <h3 class="jewelry-title">팔찌</h3>
+            <p class="jewelry-desc">팔목에 끼는 고리 형태의 장신구로, 체인, 뱅글 등의 체인으로 다양한 느낌을 낼 수 있습니다.</p>
+        </div>
+
+        <!-- 귀걸이 -->
+        <div class="jewelry-card">
+            <div class="image-stage">
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500" alt="귀걸이 1" class="jewelry-image img-main">
+                <img src="https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8JUVBJUI3JTgwJUVBJUIxJUI4JUVDJTlEJUI0fGVufDB8fDB8fHww" alt="귀걸이 2" class="jewelry-image img-sub1">
+                <img src="https://images.unsplash.com/photo-1615655114865-4cc1bda5901e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8JUVBJUI3JTgwJUVBJUIxJUI4JUVDJTlEJUI0fGVufDB8fDB8fHww" alt="귀걸이 3" class="jewelry-image img-sub2">
+            </div>
+            <h3 class="jewelry-title">귀걸이</h3>
+            <p class="jewelry-desc">귀에 거는 장신구로, 은은한 스터드 귀걸이부터 존재감 있는 드롭 귀걸이 등의 다양한 디자인이 존재합니다.</p>
+        </div>
+
+    </div>
+
+    <script>
+        const stages = document.querySelectorAll('.image-stage');
+
+        stages.forEach(stage => {
+            const images = stage.querySelectorAll('.jewelry-image');
+
+            images.forEach(clickedImg => {
+                clickedImg.addEventListener('click', function() {
+                    
+                    if (this.classList.contains('img-main')) return;
+
+                    const currentMain = stage.querySelector('.img-main');
+                    
+                    const clickedClass = this.classList.contains('img-sub1') ? 'img-sub1' : 'img-sub2';
+
+                    currentMain.classList.remove('img-main');
+                    currentMain.classList.add(clickedClass);
+
+                    this.classList.remove(clickedClass);
+                    this.classList.add('img-main');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
